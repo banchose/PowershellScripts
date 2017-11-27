@@ -1,5 +1,11 @@
 ########################################################
 #
+# This is a template script showing the different ways of using get-winevent
+# Primarily throught -FilterHashTable
+#
+#
+#
+#
 # Get-WinEvent -FilterHashTable @{key='value'...}
 #
 # Key name|Value data type|Accepts wildcard chars
