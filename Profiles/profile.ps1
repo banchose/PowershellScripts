@@ -11,7 +11,7 @@
 
 
 $DropHome = "D:\data\MyProgramData\Dropbox"
-$HRIDrop = "X:\"
+$HRIDrop = "X:\Dropbox"
 $Yesterday = (Get-Date) - (New-TimeSpan -Day 1)
 
 
