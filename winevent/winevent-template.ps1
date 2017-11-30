@@ -46,9 +46,9 @@ $cred = Get-Credential
 #
 ########################################################
 
-$computername="hribuffproddb"
-Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";StartTime=$Yesterday} -MaxEvents 200
-Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";StartTime=$Yesterday} -MaxEvents 200
+$computername="aquarius"
+# Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";StartTime=$Yesterday} -MaxEvents 200
+Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";level=1,2,3;StartTime=$Yesterday} -MaxEvents 200
 # Get-WinEvent -ComputerName $ComputerName -FilterHashtable @{logname="system", "application";StartTime=$starttime;EndTime=$endtime}
 # Get-WinEvent -ComputerName $ComputerName -FilterHashTable @{ProviderName="EventLog";StartTime=$Last2Weeks;ID='6013'}  # <-- uptime
 # Get-WinEvent -ComputerName $ComputerName  -FilterHashTable @{ProviderName="EventLog";StartTime=$Last2Weeks;ID='6009'}  # <-- Boot
