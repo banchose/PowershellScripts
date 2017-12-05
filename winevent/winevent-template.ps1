@@ -33,8 +33,11 @@
 #
 #
 ########################################################
-$starttime=[datetime]"11/22/2017 19:30"
-$endtime=[datetime]"11/22/2017 20:00"
+# $starttime=[datetime]"11/22/2017 19:30"
+# $endtime=[datetime]"11/22/2017 20:00"
+$starttime = (Get-Date).addHours(-4)
+$endtime= Get-Date
+
 $Yesterday = (Get-Date) - (New-TimeSpan -Day 1)
 $LastHour = (Get-Date).AddHours(-1)
 $Last2Hours = (Get-Date).AddHours(-2)
@@ -46,10 +49,15 @@ $cred = Get-Credential
 #
 ########################################################
 
-$computername="aquarius"
+echo $starttime
+echo $endtime
+
+$computername="mira"
 # Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";StartTime=$Yesterday} -MaxEvents 200
-Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";level=1,2,3;StartTime=$Yesterday} -MaxEvents 200
+# Get-WinEvent -ComputerName $ComputerName -Credential $cred -FilterHashtable @{logname="system", "application";level=1,2,3;StartTime=$Yesterday} -MaxEvents 200
 # Get-WinEvent -ComputerName $ComputerName -FilterHashtable @{logname="system", "application";StartTime=$starttime;EndTime=$endtime}
+# Get-WinEvent -ComputerName $ComputerName -FilterHashtable @{logname="system", "application";level=1,2,3;StartTime=$starttime;EndTime=$endtime}
+Get-WinEvent -ComputerName $ComputerName -FilterHashtable @{logname="system", "application";StartTime=$starttime;EndTime=$endtime}
 # Get-WinEvent -ComputerName $ComputerName -FilterHashTable @{ProviderName="EventLog";StartTime=$Last2Weeks;ID='6013'}  # <-- uptime
 # Get-WinEvent -ComputerName $ComputerName  -FilterHashTable @{ProviderName="EventLog";StartTime=$Last2Weeks;ID='6009'}  # <-- Boot
 # Get-WinEvent -ComputerName $ComputerName -FilterHashTable @{ProviderName="Microsoft-Windows-Kernel-General";StartTime=$Last2Weeks;ID='12'} #<-- Another Boot Check
